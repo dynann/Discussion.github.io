@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="home">
+
+   <h1 style="font-family: Poppins; font-weight: bold; color: aliceblue;">Hi, {{user.username}}!</h1> 
+ <div style="font-family: Poppins;">
+    <p > 
+        <a href="{% url 'post' %}" style="text-decoration: none; font-family: Poppins; font-weight: bold; " class="btn btn-success"> See Discussion</a>
+     </p>
+</div>
+ {% else %}
+ <div style="font-family: Poppins;">
+    <p> You are not logged in </p>
+  <a href="{% url 'login' %}">Log in</a>
+  <p> do not have account <a href="{% url 'signup' %}">sign up</a></p> 
+ </div>
+ 
+{% endif %}
+{%endblock content%}
