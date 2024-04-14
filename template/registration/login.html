@@ -8,8 +8,11 @@
       <form method="post"> 
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-success ml-2" style="font-family: Poppins; font-weight: bold; color: aliceblue;
+        <div style="text-align: center; margin: auto;">
+          <button class="btn btn-success ml-2" style="font-family: Poppins; font-weight: bold; color: aliceblue;
         ">Log in</button>
+        </div>
+        
       </form>
       <div style="font-family: Poppins; font-weight: normal; color: aliceblue; margin-top: 10px;">
         <p> forgot your password <a href="{% url 'password_reset' %}" style="text-decoration: none;">reset password</a>

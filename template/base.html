@@ -38,7 +38,6 @@
                     {% csrf_token %}
                     <li><a class="dropdown-item" href="{% url 'password_change' %}">
                             Change password</a></li>
-                    <li><a class="dropdown-item" href="{% url 'logout' %}" style="font-family: Poppins;">Log Out</a></li>
                 </ul>
             </div>
             {% else %}

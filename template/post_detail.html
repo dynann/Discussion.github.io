@@ -1,10 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
-<div class="article-entry">
-    <h2>{{post.title}}</h2>
-    <p>by {{post.author}}  |  {{post.date}}</p>
-    <p> {{post.body}}</p>
+<div class="post-detail">
+    <h2 style="font-family: Poppins; font-size: 25px; font-weight:bold; margin-top: 10px; color: aliceblue;">{{post.title}}</h2>
+    <p style="color: darkgrey;">by {{post.author}}  |  {{post.date}}</p>
+    <p style="font-family: Poppins; text-align: center; color: aliceblue;"> {{post.body}}</p>
+
+<hr>
+<h4 style="font-family: Poppins; font-size: 25px; font-weight:bold; margin-top: 10px; color: aliceblue;">Comments</h4>
+{% for comment in post.comment_set.all %}
+<p style="text-align: center; font-family: Poppins; color: aliceblue;">{{comment.author}} : &middot; {{comment}}</p>
+{% endfor %}
+<hr>
+<h4 style="font-family: Poppins; font-size: 25px; font-weight:bold; margin-top: 10px; color: aliceblue;">Add comment</h4>
+<form action="" method="post" style="font-family: Poppins; font-weight:bold; margin-top: 10px; color: aliceblue;">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button class="btn btn-success" type="submit" style="font-family: Poppins; font-weight: bold; margin: auto;">Post</button>
+</form>
 </div>
-<p> Back To <a href="{% url 'post' %}">all articles</a>.</p>
+<div style="margin: auto;">
+    <a href="{% url 'post' %}" class="btn btn-success" style="font-family: Poppins; font-weight: bold;">Back</a>
+    <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger" type="submit" style="font-family: Poppins; font-weight: bold;">Delete</a>
+</div>
 {% endblock content %}

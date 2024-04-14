@@ -3,19 +3,23 @@
 {% block content %}
 {% for posts in post %}
     <div class="post-card">
-        <div class="card-header">
-            <span class="font-weight-bold">
-                {{posts.title}}
-            </span>
-            <span class="text-muted"> by {{posts.author}} | {{posts.date}}</span>
+       
+            <div>
+                <span style="font-family: Poppins; color: aliceblue; font-weight: bold; text-align: center;">
+                    {{posts.title}}
+                </span>
+            </div>
+            <div>
+                <span class="text-muted" style="color: aliceblue; text-align: center; font-size: small;"> by {{posts.author}} | {{posts.date}}</span>
+            </div>
             &middot;
-        </div>
-        <div class="card-body">
+       
+        <div style="text-align: center; font-family: Arial; font-weight:400; color: aliceblue;">
            <p> {{posts.body}} </p>
-           <a href="{% url 'post_edit' posts.pk %}">Like Page</a>
-           <a href="{% url 'post_detail' posts.pk %}">Like Page</a>
+           <a href="{% url 'post_edit' posts.pk %}" class="btn btn-success" style="font-family: Poppins; font-weight: bold; text-decoration: none;">update</a>
+           <a href="{% url 'post_detail' posts.pk %}"  class="btn btn-success" style="font-family: Poppins; font-weight: bold; text-decoration: none;">comment</a>
         </div>
     </div>
-    <br />
+    <br/>
 {% endfor %}
 {% endblock content %}
